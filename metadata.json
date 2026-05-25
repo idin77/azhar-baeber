@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Azhar Barbershop",
+  "description": "Website modern, premium, dan profesional untuk Azhar Barbershop — Tampil Keren, Percaya Diri Sepenuhnya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
