@@ -30,7 +30,8 @@ export default function Header({ onOpenBooking }: HeaderProps) {
     { name: 'Layanan', href: '#layanan' },
     { name: 'Galeri', href: '#galeri' },
     { name: 'Harga', href: '#harga' },
-    { name: 'Testimoni', href: '#testimoni' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Artikel', href: '#artikel' },
     { name: 'Kontak', href: '#kontak' },
   ];
 

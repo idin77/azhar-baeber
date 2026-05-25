@@ -43,7 +43,7 @@ export default function Services({ onOpenBooking }: ServicesProps) {
           </div>
           
           <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white capitalize mt-1">
-            LAYANAN KAMI
+            LAYANAN <span className="text-gold font-serif">POTONG RAMBUT PRIA KARAWANG</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mt-4" />
         </div>
@@ -64,6 +64,7 @@ export default function Services({ onOpenBooking }: ServicesProps) {
                 <img
                   src={serv.image}
                   alt={serv.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108 filter brightness-[0.82] group-hover:brightness-95"
                   referrerPolicy="no-referrer"
                 />

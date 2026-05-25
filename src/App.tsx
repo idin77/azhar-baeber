@@ -7,6 +7,8 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
+import FAQSection from './components/FAQSection';
+import ArticlesSection from './components/ArticlesSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -52,6 +54,12 @@ export default function App() {
 
         {/* User Testimanies Section */}
         <Testimonials />
+
+        {/* FAQ Section */}
+        <FAQSection />
+
+        {/* Supporting SEO Articles */}
+        <ArticlesSection />
 
         {/* Contacts details & Google maps */}
         <Contact />

@@ -29,7 +29,7 @@ export default function Gallery() {
           </div>
           
           <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white capitalize">
-            GALERI HASIL KERJA
+            GAYA RAMBUT MODERN <span className="text-gold font-serif">BARBERSHOP KARAWANG</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mt-4" />
         </div>
@@ -70,6 +70,7 @@ export default function Gallery() {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108 filter brightness-[0.85] group-hover:brightness-95 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
@@ -97,6 +98,27 @@ export default function Gallery() {
               </motion.div>
             ))}
           </AnimatePresence>
+        </div>
+
+        {/* Gallery conversion direct CTA to boost conversion rates */}
+        <div className="mt-16 text-center max-w-2xl mx-auto p-8 rounded-xl bg-gradient-to-r from-[#111] to-[#0d0d0d] border border-dark-gold-border/30 shadow-2xl" id="gallery-direct-cta">
+          <h4 className="font-serif text-lg sm:text-xl font-bold text-white mb-2 uppercase">
+            Sukai Salah Satu Model Rambut Modern di Atas?
+          </h4>
+          <p className="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
+            Dapatkan pangkas rambut pria Karawang profesional yang presisi dan dijamin rapi. Barber ahli kami siap mewujudkan rambut idaman Anda dengan standar higienis.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://wa.me/6285886752081"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 px-6 bg-gradient-to-r from-[#1e5d34] to-[#25d366] hover:opacity-95 text-white font-display font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center space-x-2 transition duration-200"
+            >
+              <LucideIcon name="MessageCircle" size={15} />
+              <span>Booking WhatsApp Sekarang</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

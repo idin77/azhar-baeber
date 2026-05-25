@@ -46,7 +46,8 @@ export default function Footer() {
               <a href="#layanan" className="hover:text-gold transition">Layanan Resmi</a>
               <a href="#galeri" className="hover:text-gold transition">Galeri Kerja</a>
               <a href="#harga" className="hover:text-gold transition">Daftar Paket</a>
-              <a href="#testimoni" className="hover:text-gold transition">Testimoni</a>
+              <a href="#faq" className="hover:text-gold transition">Tanya Jawab (FAQ)</a>
+              <a href="#artikel" className="hover:text-gold transition">Artikel SEO</a>
               <a href="#kontak" className="hover:text-gold transition">Hubungi Kami</a>
             </div>
           </div>

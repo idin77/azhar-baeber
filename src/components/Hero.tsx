@@ -20,6 +20,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           alt="Premium Barbershop Workspace"
           className="w-full h-full object-cover object-center opacity-45 scale-102 filter grayscale contrast-115 brightness-90 animate-subtle-zoom"
           referrerPolicy="no-referrer"
+          loading="eager"
+          fetchPriority="high"
         />
         {/* Deep vignette masking */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-[#0A0A0A]/40" />
@@ -47,14 +49,16 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
         {/* Big Bold Elegant Title: "AZHAR BARBERSHOP" */}
         <div className="space-y-1 sm:space-y-3 mb-6 sm:mb-8" id="hero-title-container">
-          <motion.h1
+          <h1 className="sr-only">Azhar Barbershop Karawang | Pangkas &amp; Potong Rambut Pria Profesional Terdekat</h1>
+          <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-serif text-5xl sm:text-7xl md:text-8xl xl:text-9xl font-black tracking-wider text-white select-none drop-shadow-2xl"
+            aria-hidden="true"
           >
             {HERO_CONTENT.title}
-          </motion.h1>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,8 +116,32 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             id="hero-whatsapp-btn"
           >
             <LucideIcon name="MessageCircle" size={18} className="text-[#25D366]" />
-            <span>Chat WhatsApp</span>
+            <span>Booking WhatsApp</span>
           </a>
+        </motion.div>
+
+        {/* Trust & Urgency Badges line to maximize conversion rates */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.85 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gold text-xs font-semibold tracking-wider font-display uppercase"
+          id="hero-urgency-bar"
+        >
+          <span className="flex items-center gap-1.5">
+            <LucideIcon name="Zap" size={14} className="text-gold" />
+            Booking Cepat (Tanpa Antre)
+          </span>
+          <span className="hidden sm:inline text-white/20">•</span>
+          <span className="flex items-center gap-1.5">
+            <LucideIcon name="Sparkles" size={14} className="text-gold" />
+            Model Rambut Kekinian 2026
+          </span>
+          <span className="hidden sm:inline text-white/20">•</span>
+          <span className="flex items-center gap-1.5">
+            <LucideIcon name="Award" size={14} className="text-gold" />
+            Pelayanan Profesional VIP
+          </span>
         </motion.div>
 
         {/* Scroll down elegant indicators */}

@@ -24,23 +24,23 @@ export default function About() {
               <div className="flex items-center space-x-2">
                 <span className="h-[2px] w-6 bg-gold" />
                 <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold gold-text-glow">
-                  Mengenal Kami Lebih Dekat
+                  Barbershop Profesional Karawang
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-                Potongan Sempurna Untuk Menunjang Rasa Percaya Diri Anda.
+                Barbershop Karawang Terdekat: Pangkas Rambut & Potong Rambut Pria Terbaik
               </h2>
             </div>
 
             <div className="space-y-5 text-gray-400 font-sans text-sm sm:text-base leading-relaxed">
               <p>
-                <strong>Azhar Barbershop</strong> merupakan tempat potong rambut profesional dengan pelayanan terbaik, suasana super nyaman, dan barber-barber berpengalaman yang penuh dedikasi. Kami memahami bahwa gaya rambut adalah cerminan dari identitas dan kepribadian Anda.
+                Mencari <strong>Barbershop Karawang</strong> atau <strong>pangkas rambut Karawang</strong> terdekat yang menawarkan kualitas premium? <strong>Azhar Barbershop Karawang</strong> hadir sebagai jawaban untuk Anda yang menginginkan layanan potong rambut pria Karawang dengan hasil presisi tinggi, pelayanan VIP profesional, dan atmosfer yang sejuk ber-AC serta nyaman.
               </p>
               <p>
-                Didirikan sejak tahun 2020 di Karawang, kami selalu konsisten menjaga kualitas pengerjaan, keramahan staf, serta kebersihan ruangan kerja untuk memastikan setiap kunjungan Anda menjadi pengalaman relaksasi yang istimewa.
+                Didirikan sejak tahun 2020, kami konsisten membuktikan diri sebagai <strong>barbershop profesional Karawang</strong> yang berdedikasi tinggi. Setiap barber kami terlatih untuk menganalisis kontur wajah sebelum memotong rambut untuk memberikan rekomendasi gaya rambut modern paling trendi dan cocok untuk kepribadian Anda.
               </p>
               <p>
-                Azhar Barbershop adalah pilihan terbaik bagi Anda yang mendambakan kepuasan sejati dari potongan rambut berkualitas premium dengan harga yang tetap terjangkau.
+                Kami bangga telah melayani ribuan pelanggan puas di wilayah Telukjambe dan Karawang sekitarnya, menjadikannya pilihan utama bagi Anda yang mengutamakan ketampanan maksimal dengan peralatan steril berkualitas tinggi namun harga yang tetap merakyat.
               </p>
             </div>
 
@@ -58,6 +58,27 @@ export default function About() {
                 <h4 className="font-serif text-2xl sm:text-3xl font-black text-gold gold-text-glow">4+</h4>
                 <p className="text-[11px] font-display uppercase tracking-widest text-gray-500 mt-1">Barber Ahli</p>
               </div>
+            </div>
+
+            {/* Conversion Optimization: Trust-laden CTA block */}
+            <div className="pt-6 flex flex-col sm:flex-row gap-4" id="about-nav-cta">
+              <a
+                href="https://wa.me/6285886752081"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gold-gradient hover:opacity-95 text-black font-display font-bold text-xs sm:text-sm uppercase tracking-wider py-3.5 px-6 rounded-lg shadow-xl hover:shadow-gold/25 flex items-center justify-center space-x-2.5 transition duration-300 hover:scale-[1.02]"
+              >
+                <LucideIcon name="MessageCircle" size={16} />
+                <span>Konsultasi Gaya WA</span>
+              </a>
+              <button
+                onClick={() => {
+                  document.querySelector('#layanan')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-transparent hover:bg-white/5 border border-dark-gold-border hover:border-gold text-white font-display font-bold text-xs sm:text-sm uppercase tracking-wider py-3.5 px-6 rounded-lg transition duration-300 hover:scale-[1.02] cursor-pointer"
+              >
+                Eksplor Layanan Kami
+              </button>
             </div>
           </motion.div>
 

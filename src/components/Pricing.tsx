@@ -26,7 +26,7 @@ export default function Pricing({ onOpenBooking }: PricingProps) {
           </div>
           
           <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white capitalize mt-1">
-            PAKET HARGA EKSKLUSIF
+            HARGA <span className="text-gold font-serif">PANGKAS RAMBUT KARAWANG</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mt-4" />
         </div>
