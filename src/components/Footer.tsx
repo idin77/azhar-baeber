@@ -68,6 +68,12 @@ export default function Footer() {
                 <span className="text-gold"><LucideIcon name="Phone" size={13} /></span>
                 <span>{CONTACT_INFO.phone}</span>
               </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-gold"><LucideIcon name="Instagram" size={13} /></span>
+                <a href="https://www.instagram.com/azhar_barber/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">
+                  @azhar_barber
+                </a>
+              </li>
             </ul>
           </div>
 
