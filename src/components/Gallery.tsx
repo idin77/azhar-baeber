@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GALLERY_ITEMS } from '../data';
 import { GalleryItem } from '../types';
 import LucideIcon from './LucideIcon';
+import Skeleton from './Skeleton';
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const categories = ['All', 'Haircut', 'Shave', 'Styling'];
 
@@ -53,51 +60,58 @@ export default function Gallery() {
 
         {/* Elegant Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="gallery-grid">
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                layout
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className="group relative h-80 rounded-xl overflow-hidden bg-dark-card border border-dark-border cursor-pointer hover:border-dark-gold-border transition-all duration-300 shadow-lg gold-glow"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108 filter brightness-[0.85] group-hover:brightness-95 grayscale hover:grayscale-0 transition-all duration-500"
-                  referrerPolicy="no-referrer"
-                />
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-80" />
+            ))
+          ) : (
+            <AnimatePresence mode="popLayout">
+              {filteredItems.map((item, index) => (
+                <motion.div
+                  layout
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  className="group relative h-80 rounded-xl overflow-hidden bg-dark-card border border-dark-border cursor-pointer hover:border-dark-gold-border transition-all duration-300 shadow-lg gold-glow"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Image */}
+                  <img
+                    src={item.image}
+                    alt={`Gaya rambut pria model ${item.title} - ${item.category} di Azhar Barbershop Karawang`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 filter brightness-[0.85] group-hover:brightness-100 grayscale hover:grayscale-0"
+                    referrerPolicy="no-referrer"
+                  />
 
-                {/* Grid Overlay Mask */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:from-black/95" />
+                  {/* Grid Overlay Mask */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:from-black/95" />
 
-                {/* Floating Content shown on hover / persistent nicely */}
-                <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col justify-end transform transition-all duration-300">
-                  <span className="text-[10px] font-display font-bold uppercase tracking-[0.25em] text-gold gold-text-glow mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="font-serif text-lg font-bold text-white tracking-wide transition-colors group-hover:text-gold">
-                    {item.title}
-                  </h3>
-                  
-                  {/* Subtle decorative gold divider */}
-                  <div className="w-12 h-[1.5px] bg-gold mt-3 transform origin-left transition-transform duration-300 scale-x-75 group-hover:scale-x-100" />
-                </div>
+                  {/* Floating Content shown on hover / persistent nicely */}
+                  <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col justify-end transform transition-all duration-300">
+                    <span className="text-[10px] font-display font-bold uppercase tracking-[0.25em] text-gold gold-text-glow mb-1">
+                      {item.category}
+                    </span>
+                    <h3 className="font-serif text-lg font-bold text-white tracking-wide transition-colors group-hover:text-gold">
+                      {item.title}
+                    </h3>
+                    
+                    {/* Subtle decorative gold divider */}
+                    <div className="w-12 h-[1.5px] bg-gold mt-3 transform origin-left transition-transform duration-300 scale-x-75 group-hover:scale-x-100" />
+                  </div>
 
-                {/* Zoom Icon over Card Center */}
-                <div className="absolute top-4 right-4 p-2 bg-black/60 rounded-lg border border-dark-gold-border/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold-200">
-                  <LucideIcon name="Maximize2" size={14} />
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                  {/* Zoom Icon over Card Center */}
+                  <div className="absolute top-4 right-4 p-2 bg-black/60 rounded-lg border border-dark-gold-border/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold-200">
+                    <LucideIcon name="Maximize2" size={14} />
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
         </div>
 
         {/* Gallery conversion direct CTA to boost conversion rates */}

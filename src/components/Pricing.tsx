@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PACKAGES } from '../data';
 import LucideIcon from './LucideIcon';
 
@@ -7,6 +8,12 @@ interface PricingProps {
 }
 
 export default function Pricing({ onOpenBooking }: PricingProps) {
+  const [activeCategory, setActiveCategory] = useState('All');
+  
+  const filteredPackages = activeCategory === 'All' 
+    ? PACKAGES 
+    : PACKAGES.filter(p => p.category === activeCategory);
+
   return (
     <section id="harga" className="py-24 bg-gradient-to-b from-dark-bg to-black relative">
       {/* Background Gold Ambient Spots */}
@@ -31,21 +38,40 @@ export default function Pricing({ onOpenBooking }: PricingProps) {
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mt-4" />
         </div>
 
-        {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch" id="pricing-deck">
-          {PACKAGES.map((pack, index) => (
-            <motion.div
-              key={pack.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative bg-dark-card border rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 gold-glow hover:scale-[1.02] ${
-                pack.isPremium
-                  ? 'border-gold shadow-2xl scale-[1.03] md:scale-[1.05] z-10 bg-[#161510]/80'
-                  : 'border-dark-border hover:border-dark-gold-border'
+        {/* Categories Filter */}
+        <div className="flex justify-center gap-2 sm:gap-4 mb-12">
+          {['All', 'Basic', 'Premium'].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-2 rounded-full font-display font-bold text-xs uppercase tracking-wider transition-all duration-300 ${
+                activeCategory === cat
+                  ? 'bg-gold text-black shadow-lg shadow-gold/20'
+                  : 'bg-black/60 text-white hover:bg-gold/10 hover:text-gold border border-dark-gold-border/30'
               }`}
             >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch" id="pricing-deck">
+          <AnimatePresence mode="popLayout">
+            {filteredPackages.map((pack, index) => (
+              <motion.div
+                layout
+                key={pack.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                className={`relative bg-dark-card border rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 gold-glow hover:scale-[1.02] ${
+                  pack.isPremium
+                    ? 'border-gold shadow-2xl scale-[1.03] md:scale-[1.05] z-10 bg-[#161510]/80'
+                    : 'border-dark-border hover:border-dark-gold-border'
+                }`}
+              >
               {/* Premium Recommendation Badge */}
               {pack.isPremium && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient text-black text-[10px] font-display font-black tracking-[0.2em] px-4 py-1.5 rounded-full uppercase shadow-md leading-none select-none">
@@ -108,6 +134,7 @@ export default function Pricing({ onOpenBooking }: PricingProps) {
 
             </motion.div>
           ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

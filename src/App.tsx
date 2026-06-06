@@ -12,6 +12,7 @@ import ArticlesSection from './components/ArticlesSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
+import BackToTop from './components/BackToTop';
 import LucideIcon from './components/LucideIcon';
 import { motion } from 'motion/react';
 import { CONTACT_INFO } from './data';
@@ -67,6 +68,7 @@ export default function App() {
 
       {/* Footer copyright */}
       <Footer />
+      <BackToTop />
 
       {/* Booking Modal controller */}
       <BookingModal
@@ -85,7 +87,7 @@ export default function App() {
         id="floating-whatsapp-container"
       >
         <a
-          href={CONTACT_INFO.whatsappLink}
+          href={`${CONTACT_INFO.whatsappLink}?text=${encodeURIComponent('Halo Admin, saya ingin melakukan booking potong rambut')}`}
           target="_blank"
           rel="noopener noreferrer"
           className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] rounded-full shadow-2xl transition duration-300 hover:scale-110 group gold-glow"

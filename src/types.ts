@@ -22,6 +22,7 @@ export interface PricePackage {
   description: string;
   features: string[];
   isPremium?: boolean;
+  category: string;
 }
 
 export interface Testimonial {

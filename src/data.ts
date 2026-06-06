@@ -110,6 +110,7 @@ export const PACKAGES: PricePackage[] = [
     name: "Paket Basic",
     price: 35000,
     description: "Perawatan potong rambut standar berkualitas prima.",
+    category: "Basic",
     features: [
       "Haircut Profesional",
       "Hair Wash & Cleanse",
@@ -123,6 +124,7 @@ export const PACKAGES: PricePackage[] = [
     name: "Paket Premium",
     price: 50000,
     description: "Layanan lengkap komprehensif untuk ketampanan maksimal Anda.",
+    category: "Premium",
     features: [
       "Haircut Profesional",
       "Classic Shave / Beard Trim",
@@ -138,6 +140,7 @@ export const PACKAGES: PricePackage[] = [
     name: "Paket Exclusive",
     price: 75000,
     description: "Pengalaman barbershop termewah dengan pemulihan penuh.",
+    category: "Premium",
     features: [
       "Haircut VIP Custom styling",
       "Classic Beard Grooming & Shave",
